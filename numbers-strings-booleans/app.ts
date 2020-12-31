@@ -1,6 +1,7 @@
-const button = document.querySelector("button");
 // the `!` tells ts that it will never yield null (you are sure that this will get an element)
+// instead of `!`, we could wrap the button.addEventListener in a check i.e. `if (button) {}` then ts would not error
 // the `as HTMLInputElement` lets ts know what type of element this will be
+const button = document.querySelector("button")!;
 const input1 = document.getElementById("num1")! as HTMLInputElement;
 const input2 = document.getElementById("num2")! as HTMLInputElement;
 
@@ -26,6 +27,7 @@ function add(
   }
 }
 
+// could wrap this eventlistener in `if (button) {}`, then would not need the `!`
 button.addEventListener("click", function () {
   // the + converts value into a number
   add(+input1.value, +input2.value, printResult, resultPhrase);
